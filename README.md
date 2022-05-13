@@ -1,6 +1,8 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+Time at 6-7 GB RAM average.
+
 The entrance model 1000m threshold is trained on Philadelphia, United States.
 Input files are parks from parknet, city boundaries, road_network, edges and nodes from OSM and 250m population grids
 
