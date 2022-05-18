@@ -1,7 +1,9 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
-Time at 6-7 GB RAM average 12m run
+Entrance model Time at 6-7 GB RAM average 12m run (Philadelphia)
+Logarithmic Gravity model Time at 6-7 GB RAM average 15m run (Philadelphia)
+(Absolute) Gravity model Time at 6-7 GB RAM average 25m run (Philadelphia)
 
 The road extraction file extracts from OSMnx road networks of 15 carefully chosen world cities on which to run the greenspace accessibility model.
 
@@ -9,9 +11,9 @@ The 2 km buffer is 1000m metre for equal park access for each grid within city b
 
 For Denver, Colorado, United States, parts of the Adams and Amarapoe networks are added to the model to get a 'boxy' shape. Otherwise the fastest real world routes (i.e. from south east Denver to the Airport via Aurora) may not be available. For this box a buffer is also created for the equal park access.
 
-The Gravity model 1000m is the entrance model with a preference added to the size of the park reachable within 500m of the park access point. The attactiveness of a park is adjusted for this size. The mean size means a service area of 1000m at the average reachable park area. When the reachable park distance is twice the average, a travel distance of 2000m is accepted, its route distance divided by 2 to calculate the scoresn and vice versa (see also the QGIS screenshot)
+The Gravity model 1000m is the entrance model with a preference added to the size of the park reachable within 500m of the park access point. The attactiveness of a park is adjusted for this size. The mean size means a service area of 1000m at the average reachable park area. When the reachable park distance is twice the average, a travel distance of 2000m is accepted, its route distance divided by 2 to calculate the scoresn and vice versa (see also the parks_gravity screenshot)
 
-I am working on a logarithmic Gravity model, which shrinks down the differences between park attractiveness.
+The logarithmic Gravity model solves the problem of overattractiveness of large destination areas, the area-sizes are compared logarithmically, and their difference is the factor which the plain euclidean / route length is adjusted, after which those under 1000m are selected. The screenshots contain the 'preference' of grid-centroids, which park is closest (most attractive) according to the adjusted area-weighted route-distance. Grids are not tied to this park, multiple parks can be within the adjusted 1000m-range. The logarithmic is better in my opinion, it may have a bias towards smaller parks. This may be solved by adding an exponent.
 
 The entrance model 1000m threshold is trained on Philadelphia, Pennsylvania, United States.
 Input files are parks from parknet, city boundaries, road_network, edges and nodes from OSM and 250m population grids
