@@ -9,6 +9,10 @@ The 2 km buffer is 1000m metre for equal park access for each grid within city b
 
 For Denver, Colorado, United States, parts of the Adams and Amarapoe networks are added to the model to get a 'boxy' shape. Otherwise the fastest real world routes (i.e. from south east Denver to the Airport via Aurora) may not be available. For this box a buffer is also created for the equal park access.
 
+The Gravity model 1000m is the entrance model with a preference added to the size of the park reachable within 500m of the park access point. The attactiveness of a park is adjusted for this size. The mean size means a service area of 1000m at the average reachable park area. When the reachable park distance is twice the average, a travel distance of 2000m is accepted, its route distance divided by 2 to calculate the scoresn and vice versa (see also the QGIS screenshot)
+
+I am working on a logarithmic Gravity model, which shrinks down the differences between park attractiveness.
+
 The entrance model 1000m threshold is trained on Philadelphia, Pennsylvania, United States.
 Input files are parks from parknet, city boundaries, road_network, edges and nodes from OSM and 250m population grids
 
