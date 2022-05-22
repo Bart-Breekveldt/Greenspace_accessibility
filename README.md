@@ -11,6 +11,16 @@ The 2 km buffer is 1000m metre for equal park access for each grid within city b
 
 For Denver, Colorado, United States, parts of the Adams and Amarapoe networks are added to the model to get a 'boxy' shape. Otherwise the fastest real world routes (i.e. from south east Denver to the Airport via Aurora) may not be available. For this box a buffer is also created for the equal park access.
 
+The multiple Gravity model is the gravity model in which four kinds of gravity are measured: No gravity in which park size doesn't play any role at all (this is the entrance based model), full gravity (increase in park size increases attractiveness), attractive-difference halved, and attractive-difference halved twice. I have ditched the logarithmic gravity model in this part, which difference over linear park size increase or decrease was not equal, it deviates especially at the tails of the distribution of park size.
+
+For these four variants five measures summed for each grid and park. They are averaged over all grids or parks to compare cities.
+
+1. Network score: 1000 - network_cost
+2. Population score: network score multiplied by the origin grid population
+3. Walkable park score: park size that can be reached within the threshold, assuming someone will walk 500m at max from the park entry point (the walkable park area)
+4. Walkable park population score: walkable park score multiplied by the origin grid population
+5. The number of parks that can be reached within the threshold (1000m network distance here)
+
 The Gravity model 1000m is the entrance model with a preference added to the size of the park reachable within 500m of the park access point. The attactiveness of a park is adjusted for this size. The mean size means a service area of 1000m at the average reachable park area. When the reachable park distance is twice the average, a travel distance of 2000m is accepted, its route distance divided by 2 to calculate the scoresn and vice versa (see also the parks_gravity screenshot)
 
 The logarithmic Gravity model solves the problem of overattractiveness of large destination areas, the area-sizes are compared logarithmically, which means the factor which adjusts the thresholds as described above is much smaller. The screenshots contain the 'preference' of grid-centroids, which park is closest (most attractive) according to the adjusted area-weighted route-distance. Grids are not tied to this park, multiple parks can be within the adjusted 1000m-range. The logarithmic is better in my opinion, it may have a bias towards smaller parks. This may be solved by adding an exponent.
