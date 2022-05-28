@@ -1,6 +1,12 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+The Modular Multiple Gravity Model builds on the principles of the gravity models. 
+
+It is modular because you can give a set of inputs which run through the whole model. Inputs are a list of cities, distance thresholds, the max distance people walk from the park entry point, distance within which a park is considered one, which buffer-distance is taken to get road_nodes which form park entry points and the min park size can be set to exclude parks below it
+
+
+
 Entrance model Time at 6-7 GB RAM average 12m run (Philadelphia)
 Logarithmic Gravity model Time at 6-7 GB RAM average 15m run (Philadelphia)
 (Absolute) Gravity model Time at 6-7 GB RAM average 25m run (Philadelphia)
