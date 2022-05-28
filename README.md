@@ -1,11 +1,21 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
-The Modular Multiple Gravity Model builds on the principles of the gravity models. 
+The Modular Multiple Gravity Model builds on the principles of the gravity models. The same selections of parks, grids, park entry_points and pathfinding and return shortest routes and scores are used as in the previous Gravity models.
 
-It is modular because you can give a set of inputs which run through the whole model. Inputs are a list of cities, distance thresholds, the max distance people walk from the park entry point, distance within which a park is considered one, which buffer-distance is taken to get road_nodes which form park entry points and the min park size can be set to exclude parks below it
+It is modular because you can give a set of inputs which run through the whole model. Inputs are a list of cities, distance thresholds, the max distance people walk from the park entry point, distance within which a park is considered one, which buffer-distance is taken to get road_nodes which form park entry points and the min park size can be set to exclude parks below it and the size to merge entry points to improve performance
 
+1. Use of median as 1 to adjust for park size instead of mean
+2. Get a popgrid_access_R (see attachment) for grouped population access in high, medium, low and no acccess to parks from grids.
+3. These scores are normalized between 0 and 1.
+4. Multiple cities and thresholds are used within one script. Taken here are Philadelphia, Denver, Ghent, Amsterdam and Dhaka Metropolitan (province and city also named Dhaka, city is small, like City of London). Thresholds taken are 300m and 1000m. 500m is for comparing.
+5. The largest threshold is taken when calculating metrics, scores are awarded afterwards according to all thresholds.
+6. Extracting roads is included in the script, this has huge advantages for modularity and I had to load the graph again anyway because saved edge and node files together in a graph gave errors in pathfinding in road networks.
+7. Kill too much entry points by merging entry points within 17.5 metres (best by visual inspection of Philadelphia) for computational performance. The centroid of the multipoint geom is dertemined, the point closest to this centroid is taken.
 
+Important notes on this.
+1. The road networks of Ghent and especially Dublin are really dense, within the same euclidean distance threshold they require more steps in the Dijkstra algorithm. Dublin was left out for now for this reason. Looping the network distance alone without any formatting was > 95% of the computational load of its Jupyter block. Philadelphia, Denver, Amsterdam and Dhaka require between 19 and 28 steps on average with a 10.000 networks run. Ghent 41 and Dublin 72. Ghent takes 3.28m per 10.000, Dublin 12.78m. The rest is between 0.7m and 1.0m per 10.000. When having hundreds of thousands of grid-parkentry combinations within the largest threshold, this becomes a problem.
+2. The merging of entry points score per category quite differs from the score when those entry points are unmerged. The absolute average difference is 8,17% on 300m and 500m thresholds. 1000m was computationally expensive to do, so this is not compared. This can be (one-way) slip lanes as center or the greater distance created when a closest entry point is merged and is now behind the threshold. In my opinion this error is a bit too big.
 
 Entrance model Time at 6-7 GB RAM average 12m run (Philadelphia)
 Logarithmic Gravity model Time at 6-7 GB RAM average 15m run (Philadelphia)
