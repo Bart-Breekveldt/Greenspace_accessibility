@@ -34,7 +34,7 @@ Entrance model Time at 6-7 GB RAM average 12m run (Philadelphia)
 Logarithmic Gravity model Time at 6-7 GB RAM average 15m run (Philadelphia)
 (Absolute) Gravity model Time at 6-7 GB RAM average 25m run (Philadelphia)
 
-The road extraction file extracts from OSMnx road networks of 15 carefully chosen world cities on which to run the greenspace accessibility model.
+The road extraction file extracts from OSMnx road networks of 15 carefully chosen world cities on which to run the greenspace accessibility model. The cities are a good representation of HDI, location in the world, gdp per capita, mean age, size and more. The research is mainly focussed on larger cities, these are overrepresented. Cities are chosen from data availability of 100 cities, with mostly western cities. Cities in countries with a large population like China, India and Brazil are chosen because policy will probably lead to comparable city design per country to some point, thus models will be more likely to be applicable. Initially these cities are Philadelphia, Denver, London, Madrid, Warsaw, Mexico City, Lima, Sao Paulo, Seoul, Beijing, Jakarta, Bangalore, Cairo, Nairobi, Lagos
 
 The 2 km buffer is 1000m metre for equal park access for each grid within city boundaries and 1000 metre extra for clean shortest route calculation, which may exceed the initial 1000m park buffer.
 
