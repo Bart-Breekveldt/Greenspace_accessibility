@@ -1,6 +1,13 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+The Modular Multiple Gravity Model impr. decay builds on the principles of the Modular Multiple Gravity Model. Changes with this last model are:
+
+1. Hectares per person added as a metric to all grid- and parkscore files for each city and gravity metric.
+2. Removed selection of park-entry points because of too large errors to the original
+3. Changed the Gravity model variants to plain entrance, gravity ** (1/2), gravity ** (1/3) and gravity ** (1/5). According to the paper "How do travel distance and park size influence urban park visits?", the combined relation of distance and park size with the number of visitors follows very close the distribution of gravity ** (1/3), the gravity ** (1/2) and gravity ** (1/5) are set for comparing lower and upper bounds plus the original plain entrance model (the difference between gravity ** (1/3) and gravity ** (1/4) is very small, so gravity ** (1/5) is taken
+4. The original full gravity variant is removed. According to the mentioned paper this variant is totally unreasonable and it halves the executing time of the script as a whole. I will test the city of Dublin to this new variant. The full gravity model inflates the number of grids attracted to very large parks to many, which adds to less performance because the area increases faster than its diameter or radius.
+
 The Modular Multiple Gravity Model builds on the principles of the gravity models. The same selections of parks, grids, park entry_points and pathfinding and return shortest routes and scores are used as in the previous Gravity models.
 
 It is modular because you can give a set of inputs which run through the whole model. Inputs are a list of cities, distance thresholds, the max distance people walk from the park entry point, distance within which a park is considered one, which buffer-distance is taken to get road_nodes which form park entry points and the min park size can be set to exclude parks below it and the size to merge entry points to improve performance
