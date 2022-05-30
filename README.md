@@ -2,7 +2,11 @@
 Greenspace_accessibility in global cities
 
 The Modular Multiple Gravity Model impr. decay builds on the principles of the Modular Multiple Gravity Model. Changes with this last model are:
+v 2.0
+1. Added preferenced parks for each grid and each distance decay variant, which is the park with the lowest plain network route score.
+2. Added structured storage of output of grid_scores, park_scores, network routes, park_preferences and population access categorization scores.
 
+v 1.0
 1. Hectares per person added as a metric to all grid- and parkscore files for each city and gravity metric.
 2. Removed selection of park-entry points because of too large errors to the original
 3. Changed the Gravity model variants to plain entrance, gravity ** (1/2), gravity ** (1/3) and gravity ** (1/5). According to the paper "How do travel distance and park size influence urban park visits?", the combined relation of distance and park size with the number of visitors follows very close the distribution of gravity ** (1/3), the gravity ** (1/2) and gravity ** (1/5) are set for comparing lower and upper bounds plus the original plain entrance model (the difference between gravity ** (1/3) and gravity ** (1/4) is very small, so gravity ** (1/5) is taken
