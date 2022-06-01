@@ -3,6 +3,9 @@ Greenspace_accessibility in global cities
 
 The Modular Multiple Gravity Model impr. decay builds on the principles of the Modular Multiple Gravity Model. Changes with this last model are:
 v 2.0
+1. Divided the workload into chunks of 250.000 routes at a time, 1.8 million (of grid-parkentry combinations in dense Urban Road
+
+v 1.5
 1. Added preferenced parks for each grid and each distance decay variant, which is the park with the lowest plain network route score.
 2. Added structured storage of output of grid_scores, park_scores, network routes, park_preferences and population access categorization scores.
 
