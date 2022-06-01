@@ -3,7 +3,11 @@ Greenspace_accessibility in global cities
 
 The Modular Multiple Gravity Model impr. decay builds on the principles of the Modular Multiple Gravity Model. Changes with this last model are:
 v 2.0
-1. Divided the workload into chunks of 250.000 routes at a time, 1.8 million (of grid-parkentry combinations in dense Urban Road
+1. Divided the workload into chunks of 250.000 routes at a time, 1.8 million (of grid-parkentry combinations in dense Urban Roads of Dublin) is too much at once. This was already done for finding parkentry-grid combinations (looking for combinations per 1000 grids) (Philadelphia ~ 55 million possible ones), but is now also done for calculating the network routes.
+2. Added a while-loop to the block of calculating network routes. It searches for nearest neighbours if the original nodes route calculation grid to park and the reverse is not possible. This happens in the order: original grid-alternative park node, the reverse of the previous, original park-alternative grid node and its reverse. A max of 10 alternative grid nodes and 10 alternative park nodes, those which are closest in order to the original nodes, are searched for.
+3. Calculated the adjusted radius-euclidean size score. This addresses the problem that the area of a circle (the catchment area) grows faster than the plain difference between the thresholds. The adjustment factor is calculated with 600m as base: (threshold area / 600m) / (threshold / 600m). The scores are adjusted with this factor and then summarized in 'radius-euclidean adjusted popgrid access' in fractions for the populations access to parks according to this scores. The advantage is comparability between thresholds, the disadvantage is that it can bend reality a bit which is plain network access distance. Therefore I calculate both scores side by side.
+4. The scores of Dublin, Ireland are added to popgrid access csv file, for the adjusted version this still needs to happen.
+5. Ordered print outputs of the network route calculation block.
 
 v 1.5
 1. Added preferenced parks for each grid and each distance decay variant, which is the park with the lowest plain network route score.
