@@ -1,4 +1,4 @@
-,,"Philadelphia, United States","Denver, United States","Ghent, Belgium","Amsterdam, Netherlands","Dhaka Metropolitan, Bangladesh","Dublin, Ireland"
+distance decay variant & threshold,score-category,"Philadelphia, United States","Denver, United States","Ghent, Belgium","Amsterdam, Netherlands","Dhaka Metropolitan, Bangladesh","Dublin, Ireland"
 entrance_300,1 high,0.011491935,0.012836922,0.009441662,0.004280405,0.002105016,0.052187707
 entrance_300,2 medium,0.157041704,0.158628372,0.112292612,0.107025489,0.019800503,0.245738823
 entrance_300,3 low,0.206226422,0.200076047,0.120808392,0.119044731,0.0515887,0.236518076
