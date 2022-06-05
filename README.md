@@ -1,6 +1,13 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+The Modular ParksOSM Gravity Model follows the principles of the Modular Multiple Gravity Model. Improvements are
+1. While loop within network pathfinding algorithm bugfix: lengths of lists differ when joining with information of the original df. Non-existing values for routes that can't be found are given as -1 (NaN gives problems in summarizing) to equal the route numbers it puts out
+2. Made importing the park modular by importing them straight from OSM, results (Dublin still to add) in the popgrid_access ParkOSM and its adjusted version for comparing between thresholds.
+3. Found that igraph is actually slower than networkx (file). I think this is because igraph is matrix based which becomes increasingly sparse when the number of nodes grow. I also compared with directly calling graph.nodes(), see csv time shortest path functions.
+
+**Issue arose when importing WorldPoP**, the world can be downloaded in 1km resolution, not in 100m. Unable to use Python/R package or get sense of the REST API in which I have no experience. Please tell how to import WorldPoP data.
+
 The Modular Multiple Gravity Model impr. decay builds on the principles of the Modular Multiple Gravity Model. Changes with this last model are:
 v 2.0
 1. Divided the workload into chunks of 250.000 routes at a time, 1.8 million (of grid-parkentry combinations in dense Urban Roads of Dublin) is too much at once. This was already done for finding parkentry-grid combinations (looking for combinations per 1000 grids) (Philadelphia ~ 55 million possible ones), but is now also done for calculating the network routes.
