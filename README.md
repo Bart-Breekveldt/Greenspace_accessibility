@@ -1,6 +1,33 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+I have tried to do an extraction of worldpop from the WorldPoP GitHub: https://github.com/wpgp/wpgpDownloadPy. I have
+1. Downloaded countries ISO3 codes.
+2. Listed population files per country
+3. Downloaded most recent and rich population files through the terminal
+4. Transformed the GeoTIFF to a GeoDataFrame in geopandas
+5. Here extracted Athens boundaries (for the sake of example) from Greece.
+6. Get a bounding box for Athens and filtered the nodes on the x and y coordinates (to reduce the computational time for all the geometric functions. We go from 20 million cells to 12750.
+7. Got Point geometries from the GeoTIFF's x and y coordinates
+8. Get a square buffer of 50 meters to recreate a cell (50m is half the 100m resolution used)
+9. Did an overlay analysis and only get the cells within over 99% area of the max and cells with population in it. (rounded)
+10. The formatted 'popgrid' can be used for processing in the Modular ParkOSM Gravity Model
+
+**MAIN ISSUE**: I get errors when I want to download GeoTIFF population grids for a specific country in the notebook, I have to do this in the terminal, which prevents the script in becoming entirely modular (you can download all in advance and then select them in the notebook, but this isn't efficient). In my mind we can do A get the extracting to work or B execute a terminal command in the notebook (but I haven't figured out how). I think B is simple if you know how to, but A is more sustainable.
+
+I have added a file. I have tried both igraph and networkit packages according to this research https://www.timlrx.com/blog/benchmark-of-popular-graph-network-packages. Igraph was slower for the first 100K, except for Dublin. Networkit is very fast for route-finding alone, because it uses auto-multiprocessing, but all the capacity is taken when you do formatting and dissolving the routes, which adds hugely to the computation time. You can find them in the file time taken. The main reason for these packages, Dublin which took ~ 7 hours in osmnx, is gone. In the ParkOSM it gets half the grid-parkentry combinations within 1000m euclidean threshold (which to process in the routing step). The process times now are as follows
+
+Sparser networks with less combinations compute faster (networks in Europe are denser than the US and Bangladeshi ones)
+
+Philadelphia ~ 11m for 320K combinations
+Denver ~ 19m for 316K combinations
+Ghent ~ 30m for 567K combinations
+Amsterdam ~ 52m for 607K combinations
+Dhaka ~ 4s for 7799 combinations
+Dublin ~ 85m for 896K combinations
+
+Pre-processing and summarizing the data both add around 5-10 minutes to the computation time.
+
 The Modular ParksOSM Gravity Model follows the principles of the Modular Multiple Gravity Model. Improvements are
 1. While loop within network pathfinding algorithm bugfix: lengths of lists differ when joining with information of the original df. Non-existing values for routes that can't be found are given as -1 (NaN gives problems in summarizing) to equal the route numbers it puts out
 2. Made importing the park modular by importing them straight from OSM, results (Dublin still to add) in the popgrid_access ParkOSM and its adjusted version for comparing between thresholds.
