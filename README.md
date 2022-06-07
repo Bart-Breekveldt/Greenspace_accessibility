@@ -15,6 +15,9 @@ I have tried to do an extraction of worldpop from the WorldPoP GitHub: https://g
 
 **MAIN ISSUE**: I get errors when I want to download GeoTIFF population grids for a specific country in the notebook, I have to do this in the terminal, which prevents the script in becoming entirely modular (you can download all in advance and then select them in the notebook, but this isn't efficient). In my mind we can do A get the extracting to work or B execute a terminal command in the notebook (but I haven't figured out how). I think B is simple if you know how to, but A is more sustainable.
 
+ISSUE is at this piece of code from the GitHub
+![afbeelding](https://user-images.githubusercontent.com/83957293/172495212-d5a75e34-c3ac-4caa-af3e-d29bbb9192e9.png)
+
 I have added a file. I have tried both igraph and networkit packages according to this research https://www.timlrx.com/blog/benchmark-of-popular-graph-network-packages. Igraph was slower for the first 100K, except for Dublin. Networkit is very fast for route-finding alone, because it uses auto-multiprocessing, but all the capacity is taken when you do formatting and dissolving the routes, which adds hugely to the computation time. The data scores differed in osmnx and networkit, because osmnx is build for this kind of analysis and networkit is a more general network finding tool, I trust (way) more in the results of osmnx. You can find them in the file time taken. The main reason for these packages, Dublin which took ~ 7 hours in osmnx, is gone. In the ParkOSM it gets half the grid-parkentry combinations within 1000m euclidean threshold (which to process in the routing step). The process times now are as follows
 
 Sparser networks with less combinations compute faster (networks in Europe are denser than the US and Bangladeshi ones)
