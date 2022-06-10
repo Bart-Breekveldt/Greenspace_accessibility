@@ -8,7 +8,7 @@ I have integrated the WorldPoP data into the Modular ParksOSM Gravity Model. The
 3. If multiple cities from one country are set, the original country raster is now extracted only once, instead at every city
 4. The geometries of the grids got distorted at the last occasion, I now use to_geopandas() instead of to_pandas() and adjusting the last to obtain the original clean TIF cell-geometries.
 5. Instead of overlay analysis, a more direct clipping operation is now used.
-6. The threshold of 99% area for a grid to be included is changed to 95%, because of problems in Shanghai. The sheer size of the city means that the area of the full northernmost grids is less than 99%. Still areas with a rounded population of 0 are excluded.
+6. The threshold of 99% area of max grid size for a grid to be included is changed to 95%, because of problems in Shanghai. The sheer size of the city means that the area of the full northernmost grids is less than 99% of the grid with the largest area. Still areas with a rounded population of 0 are excluded.
 7. Grids come with a 100m resolution. To compare with the original 250m grids, a 300m grid size is used by dissolving by subtracting the column and row numbers by 3 and round them down to create a dissolvement key.
 8. Dissolving some grids got into a MultiPolygon instead of a Polygon because of the smallest of buffers between them not making them one Polygon. This is adjusted by reacreate the Polygon geometry with the bounding box coordinates of the dissolved cells.
 
