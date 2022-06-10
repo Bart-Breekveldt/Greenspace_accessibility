@@ -3,7 +3,16 @@ Greenspace_accessibility in global cities
 
 I have integrated the WorldPoP data into the Modular ParksOSM Gravity Model. The WorldPoP-OSM Gravity Model follows the base structure of this model. I have also changed the procedure in WorldPoP extraction. Changes all all included in the WorldPoP-OSM Gravity Model.
 
-1. The countries Russia, Canada, United States, China, Brazil and Australia are too big to load at once into Python before clipping the city out of it. I have used the QGIS raster functionality of mask clipping, which clips over
+1. The countries Russia, Canada, United States, China, Brazil and Australia are too big to load at once into Python before clipping the city out of it. I have used the QGIS raster functionality of mask clipping, which clips a raster layer over a vector layer and returns the rasters within the vector boundaries
+2. For the US, Canada and China (which we use for analysis of 11 cities) I decreased the size of the raster with excluding the most sparse/remote regions, because the greenspace accessibility is focused on large cities. For the US I these are Alaska and Hawaii, for Canada the regions Yukon, Nunavut, NorthWest Territories and for China Xinjiang, Tibet and Qinghai. Extraction is now done in ~ 10m for the 8 countries of the 11 cities
+3. If multiple cities from one country are set, the original country raster is now extracted only once, instead at every city
+4. The geometries of the grids got distorted at the last occasion, I now use to_geopandas() instead of to_pandas() and adjusting the last to obtain the original clean TIF cell-geometries.
+5. Instead of overlay analysis, a more direct clipping operation is now used.
+6. The threshold of 99% area for a grid to be included is changed to 95%, because of problems in Shanghai. The sheer size of the city means that the area of the full northernmost grids is less than 99%. Still areas with a rounded population of 0 are excluded.
+7. Grids come with a 100m resolution. To compare with the original 250m grids, a 300m grid size is used by dissolving by subtracting the column and row numbers by 3 and round them down to create a dissolvement key.
+8. Dissolving some grids got into a MultiPolygon instead of a Polygon because of the smallest of buffers between them not making them one Polygon. This is adjusted by reacreate the Polygon geometry with the bounding box coordinates of the dissolved cells.
+
+For Greater London and Shanghai results will be added later because of computational issues.
 
 I have tried to do an extraction of worldpop from the WorldPoP GitHub: https://github.com/wpgp/wpgpDownloadPy. I have
 1. Downloaded countries ISO3 codes.
