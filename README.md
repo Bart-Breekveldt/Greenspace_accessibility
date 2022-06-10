@@ -1,6 +1,10 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+I have integrated the WorldPoP data into the Modular ParksOSM Gravity Model. The WorldPoP-OSM Gravity Model follows the base structure of this model. I have also changed the procedure in WorldPoP extraction. Changes all all included in the WorldPoP-OSM Gravity Model.
+
+1. The countries Russia, Canada, United States, China, Brazil and Australia are too big to load at once into Python before clipping the city out of it. I have used the QGIS raster functionality of mask clipping, which clips over
+
 I have tried to do an extraction of worldpop from the WorldPoP GitHub: https://github.com/wpgp/wpgpDownloadPy. I have
 1. Downloaded countries ISO3 codes.
 2. Listed population files per country
