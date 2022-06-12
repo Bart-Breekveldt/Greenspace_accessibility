@@ -1,6 +1,15 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+v 2.0
+1. The model is run for both 300m and 200m resolution grids. These are merged from 100m WorldPoP-grids. This is done for Philadelphia, Denver, Ghent, Amsterdam, Dhaka, Dublin, Vancouver, Tel Aviv, Washington DC and Shanghai. These two scores are averaged. This gives the same '250-grid' result which is comparable to the CPoPGrid files in score. Both the unadjusted (not adjusting for increased area-circumference expanding differences between thresholds) and the csv in which these scores are adjusted.
+2. One in a million nearest index nodes gives two nodes as closest (with the exact same distance). In here the lowest indexed node is arbitrarily chosen (try-except clause).
+3. London caused too much computational issues. The kernel stopped working at 59.2% measuring when running on 300m grids for 12 hours straight. This is left out. Paris, France can be a good replacement if needed. Paris is also a iconic global city in Western Europe, but its city limits are relatively small compared to London. For London a faster model is needed. NetworKit has potential, but gave sharply different results (in which I trust OSMnx, which is meant for this purpose, much more) and needs to be sorted out. This would be an exception though, because mega-cities from the developing world (Shanghai and Dhaka) didn't gave much computational trouble. The large North-American cities also process quite fast. The speed in my model depends on the number of parks, the density of the road network and the size of the city. In North American cities, the road networks are not dense, in Asian cities, the number of parks is quite small and most European cities are quite small. London checks all the boxes, and is the most populous city by fast in Western Europe with ~9 million people and 1572km2, about twice the next ones in both are and population: Berlin, Madrid and Rome.
+4. Clipped the parks Qiuyi delivered from the whole of China to Shanghai. This dataset doesn't include parks just outside the Shanghai area (like Kunshan, Suzhou Division, Jiangsu),its thus a bit skewed, it doesn't give the same oppertunities to the most outer grids of Shanghai. Shanghai is huge, thus this impact is probably very small (and insignificant for the city as a whole) compared to smaller European cities like Amsterdam or Ghent.
+5. Set the crs to WGS84 from the Albers_Conic_Equal_Area projection used as original for the China parks dataset.
+6. 
+
+v 1.0
 I have integrated the WorldPoP data into the Modular ParksOSM Gravity Model. The WorldPoP-OSM Gravity Model follows the base structure of this model. I have also changed the procedure in WorldPoP extraction. Changes all all included in the WorldPoP-OSM Gravity Model.
 
 1. The countries Russia, Canada, United States, China, Brazil and Australia are too big to load at once into Python before clipping the city out of it. I have used the QGIS raster functionality of mask clipping, which clips a raster layer over a vector layer and returns the rasters within the vector boundaries
