@@ -1,6 +1,19 @@
 # Greenspace_accessibility
 Greenspace_accessibility in global cities
 
+Added is an Excel file called 'RANKING' which ranks the cities scores according to the populations access to urban greenspace. High score gets 1 point, medium 0.5 and low 0.25. They are assessed on a 100 point scale which is the max score that can be achieved. The scores are taken over the gravity ** (1/3) score, as this is the distribution from the 'Beijing' paper (I will reference properly in thesis itself) and the three thresholds are averaged. Area-circumference increased difference adjustment doesn't play a role, since the adjustment is done according to the threshold size, averaging gives you the same percentages. High threshold is larger than threshold size, Medium is larger than half the threshold size and low is below this. No is no park acccess. In the end the scores from the WorldPoP-ParksOSM and CPoPGrid-Custom Greenspace are averaged. This gives us the following ranks
+
+1. Tel Aviv
+2. Vancouver
+3. Washington D.C.
+4. Dublin
+5. Denver
+6. Ghent
+7. Philadelphia
+8. Amsterdam
+9. Dhaka
+10. Shanghai
+
 v 2.0
 1. The model is run for both 300m and 200m resolution grids. These are merged from 100m WorldPoP-grids. This is done for Philadelphia, Denver, Ghent, Amsterdam, Dhaka, Dublin, Vancouver, Tel Aviv, Washington DC and Shanghai. These two scores are averaged. This gives the same '250-grid' result which is comparable to the CPoPGrid files in score. Both the unadjusted (not adjusting for increased area-circumference expanding differences between thresholds) and the csv in which these scores are adjusted.
 2. One in a million nearest index nodes gives two nodes as closest (with the exact same distance). In here the lowest indexed node is arbitrarily chosen (try-except clause).
