@@ -1,4 +1,4 @@
-# Greenspace_accessibility
+# Greenspace_accessibility THESIS UPDATE FILE. See Urban Greenspace Accessibility for the refined code.
 Greenspace_accessibility in global cities
 
 The RANKING excel file is expanded with the rankings and score per threshold which lead to the overall ranking and score. In the new sheet 'Ranks' this threshold difference is nicely summarized.
